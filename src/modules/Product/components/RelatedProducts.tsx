@@ -14,9 +14,12 @@ const RelatedProducts = ({relatedProducts}: IRelatedProductsProps) => {
           perMove: 1,
           gap: '2rem',
           pagination: false,
+          width: '1920px',
           breakpoints: {
-            1024: {
+            1536: {
               perPage: 3,
+              gap: '1rem',
+              width: '1200px',
             },
             768: {
               perPage: 2,
@@ -29,11 +32,24 @@ const RelatedProducts = ({relatedProducts}: IRelatedProductsProps) => {
         }}
         className="mx-auto px-6 md:px-0"
       >
-        {relatedProducts?.map(product => (
+        <SplideSlide>
+          <ProductCard />
+        </SplideSlide>
+        <SplideSlide>
+          <ProductCard />
+        </SplideSlide>
+        <SplideSlide>
+          <ProductCard />
+        </SplideSlide>
+        <SplideSlide>
+          <ProductCard />
+        </SplideSlide>
+
+        {/* {relatedProducts?.map(product => (
           <SplideSlide key={product.id}>
             <ProductCard product={product} />
           </SplideSlide>
-        ))}
+        ))} */}
       </Splide>
     </div>
   );

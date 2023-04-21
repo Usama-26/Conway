@@ -37,6 +37,7 @@ module.exports = {
       borderRadius: {
         '2.5xl': '20px',
       },
+
       fontFamily: {
         'pt-sans': ['PT Sans', 'sans-serif'],
         bitter: ['Bitter', 'sans-serif'],
@@ -64,9 +65,6 @@ module.exports = {
         },
       },
     },
-  },
-  daisyui: {
-    themes: false,
   },
   plugins: ['@tailwindcss/forms', '@tailwindcss/typography'],
 };

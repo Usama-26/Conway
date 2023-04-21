@@ -13,7 +13,7 @@ const Product3DView = ({product}: {product: TProduct}) => {
   const [active2d, setActive2d] = useState(false);
   const [active3d, setActive3d] = useState(true);
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   function closeModal() {
@@ -167,10 +167,10 @@ const Product3DView = ({product}: {product: TProduct}) => {
                   >
                     <ThreeDViewSmall />
                   </div>
-                  <div className=" flex justify-between">
+                  <div className=" flex justify-between font-poppins">
                     <Button
                       size={'lg'}
-                      className="fixed w-[370px] bottom-8 left-5 rounded-md text-[14px] p-0 hover:!bg-yellow-700 hover:!text-black border-transparent focus:outline-none uppercase !bg-[#5B5B5B] focus:ring-0"
+                      className="fixed w-[370px] bottom-8 left-5 rounded-md text-[14px] p-0 hover:!bg-yellow-700 hover:!text-black border-transparent focus:outline-none !bg-[#5B5B5B] focus:ring-0"
                     >
                       <span>Select Multiple</span>
                     </Button>
@@ -182,7 +182,7 @@ const Product3DView = ({product}: {product: TProduct}) => {
                     </div>
                     <Button
                       size={'lg'}
-                      className="fixed w-[370px] bottom-8 right-5 rounded-md text-[14px] p-0 hover:!bg-yellow-700 hover:!text-black border-transparent focus:outline-none uppercase !bg-[#5B5B5B] focus:ring-0"
+                      className="fixed w-[370px] bottom-8 right-5 rounded-md text-[14px] p-0 hover:!bg-yellow-700 hover:!text-black border-transparent focus:outline-none  !bg-[#5B5B5B] capitalize focus:ring-0"
                     >
                       <span>Add to RFQ</span>
                     </Button>

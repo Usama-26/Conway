@@ -19,7 +19,7 @@ const ProductDetail = ({product}: IProductDetailProps) => {
   const [showProductDetails, setShowProductDetails] = useState(true);
 
   return (
-    <section className="text-black font-poppins mt-4 w-full">
+    <section className="text-black mx-auto font-poppins mt-4 w-full">
       <div className="mx-auto mb-10 flex lg:flex-row flex-col-reverse gap-7 justify-center">
         <div className="lg:basis-6/12 mb-4 ">
           <div className="flex sm:flex-nowrap flex-wrap justify-between gap-5">

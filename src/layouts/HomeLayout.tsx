@@ -25,7 +25,7 @@ export default function HomeLayout({
         <SearchInputMobile />
       </div>
 
-      <main className="2xl:container mx-auto relative py-5 md:px-20 px-5 text-zinc-700">
+      <main className="2xl:container mx-auto relative py-5 px-5 text-zinc-700">
         {/* Breadcrumb */}
         <div className="text-sm">
           <ul className="flex flex-row">
