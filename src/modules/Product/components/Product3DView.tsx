@@ -3,9 +3,11 @@ import {Dialog, Transition} from '@headlessui/react';
 import {TProduct} from '_types/types';
 import Image from 'next/image';
 import {XMarkIcon} from '@heroicons/react/24/outline';
-import {useRouter} from 'next/router';
+import {GoPlusSmall} from 'react-icons/go';
+import {VscDash} from 'react-icons/vsc';
 import {Fragment, useState} from 'react';
 import {Button} from '@/components/Button';
+import {BsArrowsAngleContract, BsArrowsAngleExpand} from 'react-icons/bs';
 
 const Product3DView = ({product}: {product: TProduct}) => {
   const [active2d, setActive2d] = useState(false);
@@ -13,12 +15,21 @@ const Product3DView = ({product}: {product: TProduct}) => {
 
   const [isOpen, setIsOpen] = useState(true);
 
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   function closeModal() {
     setIsOpen(false);
   }
 
   function openModal() {
     setIsOpen(true);
+  }
+
+  function openSideBar() {
+    setIsSideBarOpen(true);
+  }
+
+  function closeSideBar() {
+    setIsSideBarOpen(false);
   }
 
   const setActive = () => {
@@ -131,24 +142,30 @@ const Product3DView = ({product}: {product: TProduct}) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-screen h-screen transform overflow-hidden bg-gray-50 p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="relative w-screen h-screen transform overflow-hidden bg-gray-50 p-6 text-left align-middle shadow-xl transition-all">
                   <div className="flex justify-between items-center p-4 font-poppins">
                     <h4>
-                      <b>Active</b> -Griper Bar Complete
+                      <b>Active</b> - Griper Bar Complete
                     </h4>
                     <div className="flex gap-8">
                       <button>
                         <Image
                           src={'/icons/cart.svg'}
-                          height={15}
-                          width={15}
+                          height={32}
+                          width={32}
                           alt={'cart icon'}
                         />
                       </button>
                       <button onClick={closeModal}>
-                        <XMarkIcon className="w-4 h-4 stroke-2" />
+                        <XMarkIcon className="w-8 h-8 stroke-2" />
                       </button>
                     </div>
+                  </div>
+                  <div
+                    onClick={openSideBar}
+                    className="flex items-center justify-center"
+                  >
+                    <ThreeDViewSmall />
                   </div>
                   <div className=" flex justify-between">
                     <Button
@@ -169,6 +186,99 @@ const Product3DView = ({product}: {product: TProduct}) => {
                     >
                       <span>Add to RFQ</span>
                     </Button>
+
+                    <div
+                      className={` absolute top-0 right-0 bg-white h-screen w-[400px] shadow text-black font-poppins transition overflow-scroll ${
+                        isSideBarOpen ? 'translate-x-0' : 'translate-x-[400px]'
+                      }  
+                    `}
+                    >
+                      <div className=" bg-yellow-700 flex justify-between p-4">
+                        <h2 className="font-bold text-2xl">Part Information</h2>
+                        <span className="inline-flex gap-4">
+                          <button>
+                            <BsArrowsAngleExpand className="w-6  h-6 stroke-1" />
+                          </button>
+                          <button onClick={closeSideBar}>
+                            <XMarkIcon className="w-6 h-6 stroke-2" />
+                          </button>
+                        </span>
+                      </div>
+                      <div className="flex flex-col p-4">
+                        <div>
+                          <h2 className=" font-bold pb-4 text-2xl">
+                            Conway End Fitting O.S.
+                          </h2>
+                          <div className="relative border p-2 h-80 w-full">
+                            <h1 className="text-3xl py-10 font-bold text-center text-zinc-700/50">
+                              3D Part
+                            </h1>
+                            <span className="absolute top-2 left-2">
+                              CMI # 10-318-0-02-00
+                            </span>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="grid my-4 font-medium gap-1 grid-cols-2 grid-rows-3 text-sm">
+                            <div className="px-4 py-2 bg-yellow-700">
+                              CMI PART NO.
+                            </div>
+                            <div className="px-4 py-2 border border-yellow-700">
+                              10-318-0-15-00
+                            </div>
+                            <div className="px-4 py-2 bg-yellow-700">
+                              DESCRIPTION
+                            </div>
+                            <div className="px-4 py-2 border border-yellow-700">
+                              Conway End Fitting O.S.
+                            </div>
+                            <div className="px-4 py-2 bg-yellow-700">
+                              COMPARE TO OEM
+                            </div>
+                            <div className="px-4 py-2 border border-yellow-700">
+                              BSA0387016200
+                            </div>
+                          </div>
+                          <p>
+                            Conway End Fitting Operator Side that goes into the
+                            gripper bars for Bobst die cutters SP 900 E and SP
+                            900 ER; SP 1080 E and SP 1080 EEG; SPO 1080 E and
+                            SPO 1080 EEG. Contact us for a quote.
+                          </p>
+                          <div className="mt-4 flex items-center">
+                            <Image
+                              src={'/icons/info-circle.png'}
+                              height={20}
+                              width={20}
+                              alt="info icon"
+                            />
+                            <span className="font-bold text-xs">
+                              Default QTY = number of items used for this
+                              assembly
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-between py-2">
+                            <div className="flex">
+                              <button className="w-9 h-10 rounded-l-lg border border-r-0 hover:bg-yellow-700">
+                                <VscDash className=" w-6 h-6 fill-zinc-700 mx-auto" />
+                              </button>
+                              <span className="border text-center h-10 w-12 py-2 text-zinc-700">
+                                1
+                              </span>
+                              <button className="w-9 h-10 rounded-r-lg border border-l-0 hover:bg-yellow-700">
+                                <GoPlusSmall className="w-6 h-6 fill-zinc-700 mx-auto" />
+                              </button>
+                            </div>
+                            <Button
+                              size={'lg'}
+                              className=" rounded-md text-2xl hover:!bg-yellow-700 hover:!text-black border-transparent focus:outline-none uppercase !bg-[#5B5B5B] focus:ring-0"
+                            >
+                              <span>ADD TO RFQ</span>
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
