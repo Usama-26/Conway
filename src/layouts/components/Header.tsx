@@ -57,10 +57,7 @@ const Header = () => {
                    outline-gray-200"
                 />
               </button>
-              <button
-                onClick={() => setShowPopover(!showPopover)}
-                className="relative m-auto"
-              >
+              <Link href="/cart" className="relative m-auto">
                 {cartItems !== 0 ? (
                   <span className="absolute -top-1 -right-2.5 px-1 bg-red-400 rounded-sm text-white font-medium text-[10px]">
                     {cartItems}
@@ -130,7 +127,7 @@ const Header = () => {
                     </div>
                   </div>
                 )}
-              </button>
+              </Link>
             </div>
             <div className="border-[#76787a80] border h-8 ml-4" />
             <div className="pl-6">
