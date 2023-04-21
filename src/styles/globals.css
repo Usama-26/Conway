@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .category-variant-btn:hover > svg {
+    @apply visible;
+  }
+  .overlay:hover > div {
+    @apply opacity-100;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+ 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d9d9d9;
+}
+
+
+@media screen and (max-width: 720px) {
+ 
+}
+
+.zoomUP:hover{
+  transform: scale(1.01);
+}
+
+#mySplide .splide__arrow {
+  position: absolute !important;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#mySplide .splide__arrow--prev {
+  left: -50px !important;
+}
+#mySplide .splide__arrow--next {
+  right: -50px !important;
+}
+
+@media screen and (max-width: 720px) {
+  #mySplide .splide__arrow--prev {
+    left: -20px !important;
+  }
+  #mySplide .splide__arrow--next {
+    right: -20px !important;
+  }
+}
+
+input::-ms-reveal {
+  display: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  -webkit-text-fill-color: rgb(0, 0, 0);
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+  /* transition: background-color 5000s ease-in-out 0s; */
+}
+
+.arrow-up {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(225deg);
+  -moz-transform: rotate(225deg);
+  -o-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  border-right: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.arrow-up-item {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #272727;
+}
+
+.arrow-down-item {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #272727;
+  }
+
+  @media (max-width: 640px) {
+    .popoverMobile {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  

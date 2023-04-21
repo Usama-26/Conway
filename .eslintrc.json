@@ -1,0 +1,6 @@
+{
+  "extends": ["next/core-web-vitals", "./node_modules/gts/"],
+  "rules": {
+    "react/display-name": "off"
+  }
+}
