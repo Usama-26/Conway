@@ -23,7 +23,6 @@ export function Cart() {
               Conway Gripper Bar Complete for Bobst SP 900
             </h2>
             <div>
-              {' '}
               <span className="px-8">
                 <IoInformationCircleOutline
                   className="stroke-[#717284] w-4 h-4 inline mr-2 tooltip tooltip-left"
@@ -36,7 +35,6 @@ export function Cart() {
               <span className="px-8">REMOVE</span>
             </div>
           </div>
-          <CartRow />
           <CartRow />
           <CartRow />
           <CartRow />
