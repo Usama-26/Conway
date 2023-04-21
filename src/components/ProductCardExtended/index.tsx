@@ -45,6 +45,8 @@ export default function ProductCardExtended({
               <Image
                 src={getProductImage(product)}
                 fill
+                className="
+                object-cover"
                 alt={product.default_image?.description || ''}
                 // className={'h-full object-contain'}
               />

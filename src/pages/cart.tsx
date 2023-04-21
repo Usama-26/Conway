@@ -8,7 +8,8 @@ import {Cart} from '@/modules/Cart';
 import {Button} from '@/components/Button';
 import {Dialog, Transition} from '@headlessui/react';
 import {Fragment, useState} from 'react';
-import {XMarkIcon} from '@heroicons/react/24/outline';
+import {ChevronLeftIcon, XMarkIcon} from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 const ProductPartsTable = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,14 @@ const ProductPartsTable = () => {
     <HomeLayout>
       <>
         <div className="text-black w-full">
-          <div>
+          <Link
+            href="/"
+            className="inline-flex items-center p-2 hover:text-white hover:bg-[#5b5b5b] rounded-md"
+          >
+            <ChevronLeftIcon className="w-4 h-4 mr-2" />
+            <span>Product Catalog</span>
+          </Link>
+          <div className="p-4">
             <h3 className="font-bold text-xl">My Request For Quote List</h3>
             <h4 className="text-lg font-semibold inline-flex items-center mt-3">
               <Image
