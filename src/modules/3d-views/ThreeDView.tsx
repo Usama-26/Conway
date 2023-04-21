@@ -1,4 +1,7 @@
+import {Button} from '@/components/Button';
+
 import useIsMountedRef from '_hooks/useIsMountedRef';
+import Image from 'next/image';
 import Script from 'next/script';
 import {useCallback, useEffect} from 'react';
 import {modeldata as dataModel} from 'utils/conway-machines';
@@ -60,7 +63,7 @@ const ThreeDView = () => {
   return (
     <>
       <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.5/gsap.min.js"></Script>
-      <div id="loadingModal" className="modals">
+      {/* <div id="loadingModal" className="modals">
         <div className="modal-dialog">
           <div className="modal-contents">
             <div className="modal-body">
@@ -70,16 +73,9 @@ const ThreeDView = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="image-container">
-        <div className="move"></div>
-        <div className="scroll"></div>
-        <div className="pan"></div>
-        <div className="selectModel"></div>
-      </div>
-
-      <div id="mySidebar" className="sidebar" style={{alignItems: 'center'}}>
+      {/* <div id="mySidebar" className="sidebar" style={{alignItems: 'center'}}>
         <div
           style={{
             backgroundColor: '#ffe583',
@@ -215,7 +211,7 @@ const ThreeDView = () => {
             ADD TO RFQ
           </button>
         </div>
-      </div>
+      </div> */}
       <div>
         <canvas className="webgl relative" id="canvas1"></canvas>
       </div>
