@@ -16,6 +16,8 @@ const Product3DView = ({product}: {product: TProduct}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const [isSideBarExpanded, setIsSideBarExpanded] = useState(false);
+
   function closeModal() {
     setIsOpen(false);
   }
@@ -30,8 +32,16 @@ const Product3DView = ({product}: {product: TProduct}) => {
 
   function closeSideBar() {
     setIsSideBarOpen(false);
+    setIsSideBarExpanded(false);
   }
 
+  function expandSidebar() {
+    setIsSideBarExpanded(true);
+  }
+
+  function collapseSidebar() {
+    setIsSideBarExpanded(false);
+  }
   const setActive = () => {
     setActive2d(!active2d);
     setActive3d(!active3d);
@@ -188,28 +198,50 @@ const Product3DView = ({product}: {product: TProduct}) => {
                     </Button>
 
                     <div
-                      className={` absolute top-0 right-0 bg-white h-screen w-[400px] shadow text-black font-poppins transition overflow-scroll ${
+                      className={`absolute top-0 right-0 bg-white h-screen ${
+                        isSideBarExpanded ? 'w-full' : 'w-[400px]'
+                      }  shadow text-black font-poppins transition-all overflow-scroll ${
                         isSideBarOpen ? 'translate-x-0' : 'translate-x-[400px]'
                       }  
                     `}
                     >
-                      <div className=" bg-yellow-700 flex justify-between p-4">
+                      <div className={`bg-yellow-700 flex justify-between p-4`}>
                         <h2 className="font-bold text-2xl">Part Information</h2>
                         <span className="inline-flex gap-4">
-                          <button>
-                            <BsArrowsAngleExpand className="w-6  h-6 stroke-1" />
-                          </button>
+                          {isSideBarExpanded ? (
+                            <button onClick={collapseSidebar}>
+                              <BsArrowsAngleContract className="w-6  h-6 stroke-1" />
+                            </button>
+                          ) : (
+                            <button onClick={expandSidebar}>
+                              <BsArrowsAngleExpand className="w-6  h-6 stroke-1" />
+                            </button>
+                          )}
                           <button onClick={closeSideBar}>
                             <XMarkIcon className="w-6 h-6 stroke-2" />
                           </button>
                         </span>
                       </div>
-                      <div className="flex flex-col p-4">
-                        <div>
-                          <h2 className=" font-bold pb-4 text-2xl">
-                            Conway End Fitting O.S.
-                          </h2>
-                          <div className="relative border p-2 h-80 w-full">
+                      <div>
+                        <h2 className=" font-bold p-4 text-2xl">
+                          Conway End Fitting O.S.
+                        </h2>
+                      </div>
+                      <div
+                        className={`flex p-4 ${
+                          isSideBarExpanded ? 'flex-row  gap-4' : 'flex-col'
+                        }`}
+                      >
+                        <div
+                          className={`${
+                            isSideBarExpanded ? 'w-1/2 ' : 'w-full'
+                          }`}
+                        >
+                          <div
+                            className={`relative p-2 mb-4 border ${
+                              isSideBarExpanded ? '' : 'h-80'
+                            } w-full`}
+                          >
                             <h1 className="text-3xl py-10 font-bold text-center text-zinc-700/50">
                               3D Part
                             </h1>
@@ -218,63 +250,78 @@ const Product3DView = ({product}: {product: TProduct}) => {
                             </span>
                           </div>
                         </div>
-                        <div>
-                          <div className="grid my-4 font-medium gap-1 grid-cols-2 grid-rows-3 text-sm">
-                            <div className="px-4 py-2 bg-yellow-700">
-                              CMI PART NO.
+                        <div
+                          className={`flex flex-col justify-between ${
+                            isSideBarExpanded ? 'w-1/2 ' : 'w-full'
+                          }`}
+                        >
+                          <div>
+                            <div className="grid font-medium gap-1 grid-cols-2 grid-rows-3 text-sm">
+                              <div className="px-4 py-2 bg-yellow-700">
+                                CMI PART NO.
+                              </div>
+                              <div className="px-4 py-2 border border-yellow-700">
+                                10-318-0-15-00
+                              </div>
+                              <div className="px-4 py-2 bg-yellow-700">
+                                DESCRIPTION
+                              </div>
+                              <div className="px-4 py-2 border border-yellow-700">
+                                Conway End Fitting O.S.
+                              </div>
+                              <div className="px-4 py-2 bg-yellow-700">
+                                COMPARE TO OEM
+                              </div>
+                              <div className="px-4 py-2 border border-yellow-700">
+                                BSA0387016200
+                              </div>
                             </div>
-                            <div className="px-4 py-2 border border-yellow-700">
-                              10-318-0-15-00
-                            </div>
-                            <div className="px-4 py-2 bg-yellow-700">
-                              DESCRIPTION
-                            </div>
-                            <div className="px-4 py-2 border border-yellow-700">
-                              Conway End Fitting O.S.
-                            </div>
-                            <div className="px-4 py-2 bg-yellow-700">
-                              COMPARE TO OEM
-                            </div>
-                            <div className="px-4 py-2 border border-yellow-700">
-                              BSA0387016200
-                            </div>
+                            <p>
+                              Conway End Fitting Operator Side that goes into
+                              the gripper bars for Bobst die cutters SP 900 E
+                              and SP 900 ER; SP 1080 E and SP 1080 EEG; SPO 1080
+                              E and SPO 1080 EEG. Contact us for a quote.
+                            </p>
                           </div>
-                          <p>
-                            Conway End Fitting Operator Side that goes into the
-                            gripper bars for Bobst die cutters SP 900 E and SP
-                            900 ER; SP 1080 E and SP 1080 EEG; SPO 1080 E and
-                            SPO 1080 EEG. Contact us for a quote.
-                          </p>
-                          <div className="mt-4 flex items-center">
-                            <Image
-                              src={'/icons/info-circle.png'}
-                              height={20}
-                              width={20}
-                              alt="info icon"
-                            />
-                            <span className="font-bold text-xs">
-                              Default QTY = number of items used for this
-                              assembly
-                            </span>
-                          </div>
-                          <div className="flex items-center justify-between py-2">
-                            <div className="flex">
-                              <button className="w-9 h-10 rounded-l-lg border border-r-0 hover:bg-yellow-700">
-                                <VscDash className=" w-6 h-6 fill-zinc-700 mx-auto" />
-                              </button>
-                              <span className="border text-center h-10 w-12 py-2 text-zinc-700">
-                                1
+
+                          <div>
+                            <div className="mt-4 flex items-center">
+                              <Image
+                                src={'/icons/info-circle.png'}
+                                height={20}
+                                width={20}
+                                alt="info icon"
+                              />
+                              <span className="font-bold text-xs">
+                                Default QTY = number of items used for this
+                                assembly
                               </span>
-                              <button className="w-9 h-10 rounded-r-lg border border-l-0 hover:bg-yellow-700">
-                                <GoPlusSmall className="w-6 h-6 fill-zinc-700 mx-auto" />
-                              </button>
                             </div>
-                            <Button
-                              size={'lg'}
-                              className=" rounded-md text-2xl hover:!bg-yellow-700 hover:!text-black border-transparent focus:outline-none uppercase !bg-[#5B5B5B] focus:ring-0"
+                            <div
+                              className={`flex items-center py-2 ${
+                                isSideBarExpanded
+                                  ? 'justify-end gap-4'
+                                  : 'justify-between'
+                              }`}
                             >
-                              <span>ADD TO RFQ</span>
-                            </Button>
+                              <div className="flex">
+                                <button className="w-9 h-10 rounded-l-lg border border-r-0 hover:bg-yellow-700">
+                                  <VscDash className=" w-6 h-6 fill-zinc-700 mx-auto" />
+                                </button>
+                                <span className="border text-center h-10 w-12 py-2 text-zinc-700">
+                                  1
+                                </span>
+                                <button className="w-9 h-10 rounded-r-lg border border-l-0 hover:bg-yellow-700">
+                                  <GoPlusSmall className="w-6 h-6 fill-zinc-700 mx-auto" />
+                                </button>
+                              </div>
+                              <Button
+                                size={'lg'}
+                                className=" rounded-md text-2xl hover:!bg-yellow-700 hover:!text-black border-transparent focus:outline-none uppercase !bg-[#5B5B5B] focus:ring-0"
+                              >
+                                <span>ADD TO RFQ</span>
+                              </Button>
+                            </div>
                           </div>
                         </div>
                       </div>
